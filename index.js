@@ -7,7 +7,6 @@ var gpio = require('rpi-gpio');
 module.exports = function (homebridge) {
     Service = homebridge.hap.Service;
     Characteristic = homebridge.hap.Characteristic;
-
     homebridge.registerAccessory("homebridge-gpio-motion-sensor", "MotionSensor", InfraredSensor);
 };
 
@@ -31,7 +30,7 @@ function InfraredSensor(log, config) {
             this.service.setCharacteristic(Characteristic.MotionDetected, value);
         }
     }.bind(this));
-    gpio.setup(this.pin, gpio.DIR_IN, gpio.EDGE_BOTH, function () {
+    gpio.setup(this.pin, gpio.DIR_IN, function () {
         gpio.read(this.pin, function (err, value) {
             state = value
         });
