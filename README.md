@@ -1,4 +1,7 @@
 # homebridge-contact-sensor
+
+Fork note: Uses polling (100msec default, override with config.poll_interval) rather than edge detection, since edge detection wasn't working well for your beloved author here.
+
 This Homebridge plugin enables you to control a infrared motion sensor switch.
 
 ## Setup
