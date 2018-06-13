@@ -1,14 +1,14 @@
 {
-  "name": "homebridge-gpio-motion-sensor",
+  "name": "homebridge-gpio-polling",
   "version": "0.0.5",
-  "description": "A Homebridge plugin for a infrared sensor via GPIO of a Raspberry Pi.",
+  "description": "A Homebridge plugin for polling a GPIO pin on a Raspberry Pi.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cr3ative/homebridge-infrared-motion-sensor-gpio.git"
+    "url": "https://github.com/cr3ative/homebridge-gpio-polling.git"
   },
   "dependencies": {
     "rpi-gpio": "^0.9.1"
