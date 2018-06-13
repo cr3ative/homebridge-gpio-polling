@@ -3,14 +3,13 @@ var Service, Characteristic;
 var state = false;
 var gpio = require('rpi-gpio');
 
-
 module.exports = function (homebridge) {
     Service = homebridge.hap.Service;
     Characteristic = homebridge.hap.Characteristic;
-    homebridge.registerAccessory("homebridge-gpio-motion-sensor", "MotionSensor", InfraredSensor);
+    homebridge.registerAccessory("homebridge-gpio-polling", "GPIOSensor", GPIOSensor);
 };
 
-function InfraredSensor(log, config) {
+function GPIOSensor(log, config) {
     //config
     this.name = config["name"];
     this.pin = config["pin"];
@@ -26,8 +25,6 @@ function InfraredSensor(log, config) {
         .on('get', this.getState.bind(this));
 
     gpio.setMode(gpio.MODE_BCM);
-    log('Set to BCM');
-
     gpio.setup(this.pin, gpio.DIR_IN, function (err) {
         if (err) throw err;
         setInterval(function() {
@@ -43,11 +40,11 @@ function InfraredSensor(log, config) {
     }.bind(this));
 }
 
-InfraredSensor.prototype.getState = function (callback) {
+GPIOSensor.prototype.getState = function (callback) {
     callback(null, state);
 };
 
-InfraredSensor.prototype.getServices = function () {
+GPIOSensor.prototype.getServices = function () {
     return [this.service];
 };
 

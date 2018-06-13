@@ -1,16 +1,17 @@
 # homebridge-gpio-polling
 
-Fork note: Uses polling (100msec default, override with config.poll_interval) rather than edge detection, since edge detection wasn't working well for your beloved author here.
+Watches a GPIO pin. Reports state to Homebridge as a Motion Sensor. Simple.
 
-This Homebridge plugin exposes itself as a motion sensor, and passes through if the monitored pin is high or low.
+This is special because:
 
-We use BCM pin numbering here rather than RPi or otherwise.
+- It uses polling rather than edge detection, since edge detection wasn't working well for your beloved author here
+- We use BCM pin numbering
 
 Sample configuration looks like:
 
 ```
 {
-    "accessory": "MotionSensor",
+    "accessory": "GPIOSensor",
     "name": "Motion",
     "pin": 26,
     "poll_interval": 100
